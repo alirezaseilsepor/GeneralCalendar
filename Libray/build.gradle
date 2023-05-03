@@ -10,8 +10,8 @@ plugins {
 ext {
     PUBLISH_GROUP_ID = 'ir.king-app'
     PUBLISH_VERSION = '1.0.0'
-    PUBLISH_ARTIFACT_ID = 'utils'
-    PUBLISH_DESCRIPTION = 'utils Android SDK'
+    PUBLISH_ARTIFACT_ID = 'generalCalendar'
+    PUBLISH_DESCRIPTION = 'generalCalendar Android SDK'
     PUBLISH_URL = 'https://github.com/alirezaseilsepor/GeneralCalendar'
     PUBLISH_LICENSE_NAME = 'Apache License'
     PUBLISH_LICENSE_URL = 'https://github.com/alirezaseilsepor/GeneralCalendar/blob/master/LICENSE'
