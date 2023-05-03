@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'maven-publish'
+}
+
+
+ext {
+    PUBLISH_GROUP_ID = 'ir.king-app'
+    PUBLISH_VERSION = '1.2.7'
+    PUBLISH_ARTIFACT_ID = 'utils'
+    PUBLISH_DESCRIPTION = 'utils Android SDK'
+    PUBLISH_URL = 'https://github.com/alirezaseilsepor/MyUtils'
+    PUBLISH_LICENSE_NAME = 'Apache License'
+    PUBLISH_LICENSE_URL = 'https://github.com/alirezaseilsepor/MyUtils/blob/master/LICENSE'
+    PUBLISH_DEVELOPER_ID = 'alireza'
+    PUBLISH_DEVELOPER_NAME = 'alireza seilsepor'
+    PUBLISH_DEVELOPER_EMAIL = 'alirezaseilsepor@gmail.com'
+    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/alirezaseilsepor/MyUtils.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/alirezaseilsepor/MyUtils.git'
+    PUBLISH_SCM_URL = 'https://github.com/alirezaseilsepor/MyUtils/tree/master'
+}
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+
+
+kapt {
+    correctErrorTypes = true
+}
+
+android {
+    namespace 'ir.kingapp.calendar'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+        versionName "1.2.7"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation "net.time4j:time4j-android:4.8-2021a"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
