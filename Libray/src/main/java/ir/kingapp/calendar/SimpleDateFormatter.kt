@@ -32,6 +32,7 @@ internal class SimpleDateFormatter {
 
     fun format(
         dateDelegate: DateDelegate,
+        locale: Locale,
         patternDateFormat: PatternDateFormat = PatternDateFormat.SHORT_SLASH,
     ): String {
         var result = ""
@@ -47,7 +48,7 @@ internal class SimpleDateFormatter {
                 }
 
                 MONTH_N -> {
-                    data = dateDelegate.monthName(Locale.ENGLISH)
+                    data = dateDelegate.monthName(locale)
                 }
 
                 DAY -> {
@@ -55,7 +56,7 @@ internal class SimpleDateFormatter {
                 }
 
                 DAY_N -> {
-                    data = dateDelegate.dayWeekName(Locale.ENGLISH)
+                    data = dateDelegate.dayWeekName(locale)
                 }
 
                 DAY_NONE_ZERO -> {

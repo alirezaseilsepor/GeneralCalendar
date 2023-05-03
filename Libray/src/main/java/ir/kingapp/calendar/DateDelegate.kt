@@ -28,9 +28,12 @@ interface DateDelegate {
     }
 
 
-    fun format(patternDateFormat: PatternDateFormat = PatternDateFormat.SHORT_LINE): String {
+    fun format(
+        locale: Locale,
+        patternDateFormat: PatternDateFormat = PatternDateFormat.SHORT_LINE,
+    ): String {
         val simpleDateFormatter = SimpleDateFormatter()
-        return simpleDateFormatter.format(this.copy(), patternDateFormat)
+        return simpleDateFormatter.format(this.copy(), locale, patternDateFormat)
     }
 
     operator fun compareTo(other: DateDelegate) = id.compareTo(other.id)

@@ -129,7 +129,7 @@ class GregorianDate() : DateDelegate {
     }
 
     override fun toString(): String {
-        return simpleDateFormatter.format(this)
+        return simpleDateFormatter.format(this, Locale.ENGLISH)
     }
 
     fun toPersianDate(): PersianDate {
