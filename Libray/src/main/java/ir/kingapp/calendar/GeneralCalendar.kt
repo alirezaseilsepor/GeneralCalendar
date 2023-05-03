@@ -2,6 +2,7 @@ package ir.kingapp.calendar
 
 import android.content.Context
 import net.time4j.android.ApplicationStarter
+import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
@@ -40,6 +41,11 @@ class GeneralCalendar() : DateDelegate {
 
     constructor(delegate: DateDelegate) : this() {
         this.dateDelegate = delegate
+    }
+
+    constructor(date: Date) : this() {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.ENGLISH)
+        this.dateDelegate = PersianDate(dateFormat.format(date))
     }
 
 
@@ -95,7 +101,7 @@ class GeneralCalendar() : DateDelegate {
         return this
     }
 
-    override fun goEndMonth(): DateDelegate {
+    override fun goEndMonth(): GeneralCalendar {
         dateDelegate = dateDelegate.goEndMonth()
         return this
     }

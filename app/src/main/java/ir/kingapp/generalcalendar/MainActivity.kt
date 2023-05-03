@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         GeneralCalendar.init(this.applicationContext)
+        GeneralCalendar.init(this.applicationContext)
         //   parsePersianDate("1402/03/09")
         val date5 = PersianDate()
         val date6 = GregorianDate()
