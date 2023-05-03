@@ -103,6 +103,10 @@ class GregorianDate() : DateDelegate {
         return toPersianDate().dayWeekName(locale)
     }
 
+    fun format(patternDateFormat: PatternDateFormat): String {
+        return format(Locale.ENGLISH, patternDateFormat)
+    }
+
     override fun copy(): GregorianDate {
         return GregorianDate(year, month, day)
     }

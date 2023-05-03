@@ -95,6 +95,10 @@ class PersianDate() : DateDelegate {
         return persianCalendar.dayOfWeek.getDisplayName(locale)
     }
 
+    fun format(patternDateFormat: PatternDateFormat): String {
+        return format(Locale("fa"), patternDateFormat)
+    }
+
     override fun copy(): PersianDate {
         return PersianDate(year, month, day)
     }

@@ -133,6 +133,22 @@ class GeneralCalendar() : DateDelegate {
         return dateDelegate.dayWeekName(locale)
     }
 
+    fun format(
+        patternDateFormat: PatternDateFormat = PatternDateFormat.SHORT_LINE,
+    ): String {
+        return when (dateDelegate) {
+            is PersianDate -> {
+                (dateDelegate as PersianDate).format(patternDateFormat)
+            }
+
+            is GregorianDate -> {
+                (dateDelegate as GregorianDate).format(patternDateFormat)
+            }
+
+            else -> ""
+        }
+    }
+
     override fun copy(): GeneralCalendar {
         return GeneralCalendar(dateDelegate.copy())
     }
