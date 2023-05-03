@@ -57,8 +57,8 @@ class GeneralCalendar() : DateDelegate {
 
     companion object {
         var calendarType = CalendarType.PERSIAN
-        fun init(context: Context) {
-            ApplicationStarter.initialize(context, true)
+        fun init(context: Context, prefetch: Boolean = true) {
+            ApplicationStarter.initialize(context, prefetch)
         }
 
         fun of(stringDate: String?): GeneralCalendar? {
