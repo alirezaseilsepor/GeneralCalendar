@@ -1,5 +1,6 @@
 package ir.kingapp.calendar
 
+import android.util.Log
 import java.util.Locale
 
 internal class SimpleDateFormatter {
@@ -9,8 +10,7 @@ internal class SimpleDateFormatter {
         stringDate: String,
     ): GeneralCalendar? {
         val result = runCatching {
-            if (stringDate.length < 8)
-                return@runCatching null
+            if (stringDate.length < 8) return@runCatching null
 
             val splitChar = stringDate[4]
             val splitList = stringDate.split(splitChar)
@@ -18,14 +18,26 @@ internal class SimpleDateFormatter {
             val month = getSafeInt(splitList.getOrNull(1), 2) ?: return@runCatching null
             val day = getSafeInt(splitList.getOrNull(2), 2) ?: return@runCatching null
 
-            if (year in 1971..2040)
-                return@runCatching GeneralCalendar(GregorianDate(year, month, day))
+            if (year in 1900..2100) return@runCatching GeneralCalendar(
+                GregorianDate(
+                    year,
+                    month,
+                    day
+                )
+            )
 
-            if (year in 1350..1440)
-                return@runCatching GeneralCalendar(PersianDate(year, month, day))
-
+            if (year in 1300..1500) return@runCatching GeneralCalendar(
+                PersianDate(
+                    year,
+                    month,
+                    day
+                )
+            )
             return@runCatching null
         }
+        if (result.getOrNull() == null)
+            Log.e("GeneralCalendar", "can't convert $stringDate")
+
         return result.getOrNull()
     }
 
@@ -90,15 +102,11 @@ internal class SimpleDateFormatter {
 
 
     private fun getSafeInt(text: String?, maxLength: Int): Int? {
-        if (text == null)
-            return null
+        if (text == null) return null
 
-        if (text.length == 1)
-            return text.toIntOrNull()
+        if (text.length == 1) return text.toIntOrNull()
 
-        return if (text.length < maxLength)
-            null
-        else
-            text.substring(0, maxLength).toIntOrNull()
+        return if (text.length < maxLength) null
+        else text.substring(0, maxLength).toIntOrNull()
     }
 }
