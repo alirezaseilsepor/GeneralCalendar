@@ -31,12 +31,11 @@ kapt {
 
 android {
     namespace 'ir.kingapp.calendar'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
-        versionName "1.2.7"
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
