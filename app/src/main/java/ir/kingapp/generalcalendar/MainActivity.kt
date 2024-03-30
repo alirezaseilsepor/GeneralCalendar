@@ -1,6 +1,7 @@
 package ir.kingapp.generalcalendar
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import ir.kingapp.calendar.GeneralCalendar
 import ir.kingapp.calendar.GregorianDate
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         val a2 = date6.getListMonthName(Locale("fa"))
         val a3 = date6.getListMonthName(Locale("en"))
         val e=a3
+
+        Log.e("date55555",date5.toString())
     }
 
 }

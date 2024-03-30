@@ -6,12 +6,13 @@ import net.time4j.calendar.PersianMonth
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import java.util.GregorianCalendar
 import java.util.Locale
 
 class PersianDate() : DateDelegate {
 
     private val simpleDateFormatter = SimpleDateFormatter()
-    private var persianCalendar = PersianCalendar.nowInSystemTime()
+    private var persianCalendar = getPersianCalendar()
 
 
     constructor(stringDate: String) : this() {
@@ -144,6 +145,13 @@ class PersianDate() : DateDelegate {
         val pd = persianCalendar.transform(PlainDate::class.java).atTime(12, 0)
         val dateFormatter = SimpleDateFormat("y-M-d", Locale.ENGLISH)
         return dateFormatter.parse(pd.toString())!!
+    }
+
+    private fun getPersianCalendar(): PersianCalendar {
+        val gc=GregorianCalendar()
+        val planDate = PlainDate.of(gc.getYearCompact(), gc.getMonthCompact(), gc.getDayCompact())
+        val pt = planDate.transform(PersianCalendar::class.java)
+        return PersianCalendar.of(pt.year, pt.month.value, pt.dayOfMonth)
     }
 
 }
