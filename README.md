@@ -1,2 +1,2 @@
 ### Install
-### implementation 'ir.king-app:generalCalendar:1.0.5'
+### implementation 'ir.king-app:generalCalendar:1.0.6'
