@@ -3,6 +3,7 @@ package ir.kingapp.calendar
 import java.util.Date
 import java.util.Locale
 import kotlin.math.ceil
+import kotlin.math.round
 
 interface DateDelegate {
     val year: Int
@@ -25,7 +26,7 @@ interface DateDelegate {
     fun untilDays(dateDelegate: DateDelegate): Int {
         val diffInMillis = dateDelegate.date.time - date.time
         val days=diffInMillis / (1000 * 60 * 60 * 24).toDouble()
-        return ceil(days).toInt()
+        return round(days).toInt()
     }
 
 
