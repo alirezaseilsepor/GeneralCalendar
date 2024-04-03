@@ -2,7 +2,7 @@ package ir.kingapp.calendar
 
 import java.util.Date
 import java.util.Locale
-import java.util.concurrent.TimeUnit
+import kotlin.math.ceil
 
 interface DateDelegate {
     val year: Int
@@ -23,8 +23,9 @@ interface DateDelegate {
     fun copy(): DateDelegate
 
     fun untilDays(dateDelegate: DateDelegate): Int {
-        val diff = dateDelegate.date.time - date.time
-        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
+        val diffInMillis = dateDelegate.date.time - date.time
+        val days=diffInMillis / (1000 * 60 * 60 * 24).toDouble()
+        return ceil(days).toInt()
     }
 
 

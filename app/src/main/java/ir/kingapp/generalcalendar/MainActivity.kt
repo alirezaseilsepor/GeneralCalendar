@@ -20,6 +20,13 @@ class MainActivity : AppCompatActivity() {
         val date5 = PersianDate()
         val date6 = GregorianDate()
         val date7 = GeneralCalendar()
+
+        val startDate = GeneralCalendar("2024-03-24T12:30:00.000")
+        val today = GeneralCalendar()
+        val today1 = GeneralCalendar().date
+        val eee=today1
+        val progress = startDate.untilDays(today).toFloat()
+        val a22=progress
         val a13 = date7.monthName(Locale("fa"))
         val a24 = date7.monthName(Locale("en"))
         val a = date5.getListMonthName(Locale("fa"))
