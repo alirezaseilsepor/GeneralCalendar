@@ -1,5 +1,6 @@
--keep class net.time4j.android.spi.AndroidResourceLoader
--keep class net.time4j.android.spi.AndroidTickerSPI
+-keepnames @kotlin.Metadata class net.time4j.android.spi.**
+-keep class net.time4j.android.spi.** { *; }
+-keepclassmembers class net.time4j.android.spi.** { *; }
 
 -keepnames class net.time4j.tz.olson.AFRICA
 -keepnames class net.time4j.tz.olson.AMERICA
