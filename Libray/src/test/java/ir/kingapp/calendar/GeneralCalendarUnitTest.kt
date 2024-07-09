@@ -31,14 +31,14 @@ class GeneralCalendarUnitTest {
         assertEquals("2022-10-28", gc4.format())
         assertEquals("2022-10-28", gc5.format())
         assertEquals("2022-10-28", gc6.format())
-        assertEquals("1401-08-06", gc4.toPersianDate().format())
-        assertEquals("1401-08-06", gc5.toPersianDate().format())
-        assertEquals("1401-08-06", gc6.toPersianDate().format())
+        assertEquals("1401-08-06", gc4.toPersianDate().format(PatternDateFormat.SHORT_LINE))
+        assertEquals("1401-08-06", gc5.toPersianDate().format(PatternDateFormat.SHORT_LINE))
+        assertEquals("1401-08-06", gc6.toPersianDate().format(PatternDateFormat.SHORT_LINE))
 
         GeneralCalendar.calendarType = CalendarType.PERSIAN
-        assertEquals("2022-10-28", gc4.toGregorianDate().format())
-        assertEquals("2022-10-28", gc5.toGregorianDate().format())
-        assertEquals("2022-10-28", gc6.toGregorianDate().format())
+        assertEquals("2022-10-28", gc4.toGregorianDate().format(PatternDateFormat.SHORT_LINE))
+        assertEquals("2022-10-28", gc5.toGregorianDate().format(PatternDateFormat.SHORT_LINE))
+        assertEquals("2022-10-28", gc6.toGregorianDate().format(PatternDateFormat.SHORT_LINE))
         assertEquals("2021-08-10T00:00:00.000", gc3.getDateForServer())
 
         GeneralCalendar.calendarType = CalendarType.Gregorian

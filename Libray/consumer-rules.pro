@@ -40,3 +40,19 @@
 -keepnames class net.time4j.calendar.frenchrev.SPX
 -keepnames class net.time4j.calendar.hindu.SPX
 -keepnames class net.time4j.history.SPX
+
+-keepclassmembers class net.time4j.** implements java.io.Serializable {
+    static final long serialVersionUID;
+    !static !transient <fields>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+-keepclassmembers class **.SPX implements java.io.Externalizable {
+    static final long serialVersionUID;
+    <init>();
+    public void writeExternal(java.io.ObjectOutput);
+    public void readExternal(java.io.ObjectInput);
+    java.lang.Object readResolve();
+}
