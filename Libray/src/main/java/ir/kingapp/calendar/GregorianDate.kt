@@ -29,7 +29,7 @@ class GregorianDate() : DateDelegate {
         gregorianCalendar.set(Calendar.DAY_OF_MONTH, day)
         gregorianCalendar.set(Calendar.MONTH, month - 1)
         gregorianCalendar.set(Calendar.YEAR, year)
-        gregorianCalendar.set(Calendar.HOUR_OF_DAY, 0)
+        gregorianCalendar.set(Calendar.HOUR_OF_DAY, 12)
         gregorianCalendar.set(Calendar.MINUTE, 0)
         gregorianCalendar.set(Calendar.SECOND, 0)
         gregorianCalendar.set(Calendar.MILLISECOND, 0)
@@ -64,7 +64,7 @@ class GregorianDate() : DateDelegate {
         get() = gregorianCalendar.isLeapYear(year)
 
     override val date: Date
-        get() = gregorianCalendar.time
+        get() = toDate()
 
     override fun goStartMonth(): GregorianDate {
         gregorianCalendar.set(Calendar.DAY_OF_MONTH, 1)
@@ -140,5 +140,13 @@ class GregorianDate() : DateDelegate {
         val planDate = PlainDate.of(year, month, day)
         val pt = planDate.transform(PersianCalendar::class.java)
         return PersianDate(pt.year, pt.month.value, pt.dayOfMonth)
+    }
+
+    private fun toDate(): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = gregorianCalendar.time
+        calendar.set(Calendar.HOUR_OF_DAY, 12)
+        calendar.set(Calendar.MINUTE, 0)
+        return calendar.time
     }
 }

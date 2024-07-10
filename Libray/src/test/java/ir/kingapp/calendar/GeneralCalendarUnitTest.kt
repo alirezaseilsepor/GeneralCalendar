@@ -42,7 +42,17 @@ class GeneralCalendarUnitTest {
         assertEquals("2021-08-10T00:00:00.000", gc3.getDateForServer())
 
         GeneralCalendar.calendarType = CalendarType.Gregorian
-        assertEquals("2021-08-10T00:00:00.000", gc3.getDateForServer())
+        assertEquals("2021-08-10T12:00:00.000", gc3.getDateForServer())
+
+        GeneralCalendar.calendarType = CalendarType.PERSIAN
+        val date1="2024-07-10T12:30:00.000"
+        val persianDate=GeneralCalendar(date1)
+        val untilDayP=GeneralCalendar().untilDays(persianDate)
+        GeneralCalendar.calendarType = CalendarType.Gregorian
+        val gregDate=GeneralCalendar(date1)
+        val untilDayG=GeneralCalendar().untilDays(gregDate)
+        assertEquals(untilDayP, untilDayG)
+
     }
 
 

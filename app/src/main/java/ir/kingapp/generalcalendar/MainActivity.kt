@@ -3,6 +3,7 @@ package ir.kingapp.generalcalendar
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import ir.kingapp.calendar.CalendarType
 import ir.kingapp.calendar.GeneralCalendar
 import ir.kingapp.calendar.GregorianDate
 import ir.kingapp.calendar.PersianDate
@@ -35,7 +36,17 @@ class MainActivity : AppCompatActivity() {
         val a3 = date6.getListMonthName(Locale("en"))
         val e=a3
 
-        Log.e("date55555",date5.toString())
+
+        GeneralCalendar.calendarType = CalendarType.PERSIAN
+        val date1="2024-07-07T12:30:00.000"
+        val persianDate=GeneralCalendar(date1)
+        val untilDayP=GeneralCalendar().untilDays(persianDate)
+        GeneralCalendar.calendarType = CalendarType.Gregorian
+        val gregDate=GeneralCalendar(date1)
+        val untilDayG=GeneralCalendar().untilDays(gregDate)
+      //  assertEquals(untilDayP, untilDayG)
+
+        Log.e("date55555",untilDayP.toString()+"   "+untilDayG.toString())
     }
 
 }
